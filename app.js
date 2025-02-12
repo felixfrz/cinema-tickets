@@ -9,10 +9,22 @@ const purchaseTicketsDemo = () => {
     // Example 1: Valid purchase
     const result = ticketService.purchaseTickets(
       1, // accountId
-      new TicketTypeRequest("ADULT", 25),
-    //  new TicketTypeRequest("CHILD", 1)
-      // new TicketTypeRequest("INFANT", 1)
+      new TicketTypeRequest("ADULT", 1),
+      new TicketTypeRequest("CHILD", 1),
+      new TicketTypeRequest("INFANT", 1)
     );
+    // Example 2: Invalid purchase exceed max number of seat
+    // const result1 = ticketService.purchaseTickets(
+    //   1, // accountId
+    //   new TicketTypeRequest("ADULT", 25),
+    //   new TicketTypeRequest("CHILD", 1),
+    //   new TicketTypeRequest("INFANT", 1)
+    // );
+    // Example 3: Invalid purchase (no adult ticket)
+    // const result2 = ticketService.purchaseTickets(
+    //   1,
+    //   new TicketTypeRequest("CHILD", 1)
+    // );
 
     console.log("Success! Purchase details:", result);
   } catch (error) {
