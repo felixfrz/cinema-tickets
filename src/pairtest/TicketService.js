@@ -75,7 +75,7 @@ export default class TicketService {
 
     const ticketCounts = this.#validatePurchaseRequest(
       accountId,
-      ticketRequests
+      ticketTypeRequests
     );
     const totalAmount = this.#calculateTotalAmount(ticketCounts);
     const seatsToAllocate = this.#calculateSeatsToAllocate(ticketCounts);
@@ -90,7 +90,7 @@ export default class TicketService {
       success: true,
       ticketCounts,
       totalAmount,
-      seatsToAllocated: seatsToAllocate,
+      seatsAllocated: seatsToAllocate,
     };
   }
 }
