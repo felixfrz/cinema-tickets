@@ -72,5 +72,25 @@ export default class TicketService {
 
   purchaseTickets(accountId, ...ticketTypeRequests) {
     // throws InvalidPurchaseException
+
+    const ticketCounts = this.#validatePurchaseRequest(
+      accountId,
+      ticketRequests
+    );
+    const totalAmount = this.#calculateTotalAmount(ticketCounts);
+    const seatsToAllocate = this.#calculateSeatsToAllocate(ticketCounts);
+
+    // Process payment
+    this.#paymentService.makePayment(accountId, totalAmount);
+
+    // Reserve seats
+    this.#reservationService.reserveSeat(accountId, seatsToAllocate);
+
+    return {
+      success: true,
+      ticketCounts,
+      totalAmount,
+      seatsToAllocated: seatsToAllocate,
+    };
   }
 }
