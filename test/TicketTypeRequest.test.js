@@ -2,7 +2,7 @@ import TicketTypeRequest from "../src/pairtest/lib/TicketTypeRequest.js";
 
 describe("TicketTypeRequest", () => {
   describe("constructor", () => {
-    test("should create instance with valid ticket type and number", () => {
+    test("An instance should be created using a valid ticket type and number.", () => {
       const request = new TicketTypeRequest("ADULT", 1);
       expect(request.getTicketType()).toBe("ADULT");
       expect(request.getNoOfTickets()).toBe(1);
