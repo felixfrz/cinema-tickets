@@ -54,7 +54,5 @@ describe("TicketService", () => {
         ticketService.purchaseTickets(1, new TicketTypeRequest("INFANT", 1));
       }).toThrow(InvalidPurchaseException);
     });
-      
-      
   });
 });
