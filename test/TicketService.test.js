@@ -54,5 +54,34 @@ describe("TicketService", () => {
         ticketService.purchaseTickets(1, new TicketTypeRequest("INFANT", 1));
       }).toThrow(InvalidPurchaseException);
     });
+
+    // Infant-Adult ratio tests
+    test("should reject when infants exceed adults", () => {
+      expect(() => {
+        ticketService.purchaseTickets(
+          1,
+          new TicketTypeRequest("ADULT", 1),
+          new TicketTypeRequest("INFANT", 2)
+        );
+      }).toThrow(InvalidPurchaseException);
+    });
+    // Empty request tests
+    test("should reject empty ticket requests", () => {
+      expect(() => {
+        ticketService.purchaseTickets(1);
+      }).toThrow(InvalidPurchaseException);
+    });
+    // Complex combinations
+    test("should handle complex valid ticket combinations", () => {
+      const result = ticketService.purchaseTickets(
+        1,
+        new TicketTypeRequest("ADULT", 3),
+        new TicketTypeRequest("CHILD", 2),
+        new TicketTypeRequest("INFANT", 2)
+      );
+      expect(result.success).toBe(true);
+      expect(result.totalAmount).toBe(105); // 3 adults (75) + 2 children (30)
+      expect(result.seatsAllocated).toBe(5); // 3 adults + 2 children
+    });
   });
 });
