@@ -1,4 +1,4 @@
-# Cinema Ticket Service
+# Cinema Tickets
 
 A ticket booking service implementation that handles the purchase of tickets for a cinema, following specific business rules and constraints.
 
