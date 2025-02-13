@@ -97,22 +97,11 @@ npm start
 
 ## Error Handling
 
-The service handles various error scenarios: - Invalid account IDs - Invalid ticket quantities - Business rule violations - Missing adult tickets - Exceeded maximum tickets - Invalid infant-adult ratios
+The service handles various error scenarios: 
+   - Invalid account IDs
+   - Invalid ticket quantities
+   - Business rule violations
+   - Missing adult tickets
+   - Exceeded maximum tickets
+   - Invalid infant-adult ratios
 
-## Code Quality Measures
-
-1. **Immutability**
-
-- TicketTypeRequest is immutable
-- Private fields using # prefix
-- Frozen objects where appropriate
-
-2. **Encapsulation**
-   - Private methods for internal logic
-   - Clear separation of concerns
-   - Protected internal state
-3. **Clean Code Practices**
-   - Meaningful variable names
-   - Single responsibility principle
-   - Comprehensive error messages
-   - Clear code organization
